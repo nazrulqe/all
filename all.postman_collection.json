@@ -1,0 +1,1578 @@
+{
+	"info": {
+		"_postman_id": "67691d3e-16f0-44af-8185-01510be83d38",
+		"name": "all",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-FFM-65-Reg-Com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6fa9bb9-0a3b-4356-b9af-76f5e2ab20d2",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": {},",
+							"    \"examples\": [",
+							"        {",
+							"            \"data\": {",
+							"                \"company_address\": \"sylhet\",",
+							"                \"company_id\": 752,",
+							"                \"company_name\": \"tata\",",
+							"                \"tin\": \"54000065\"",
+							"            },",
+							"            \"message\": \"Successfully registered company 'tata' .\",",
+							"            \"status\": \"success\"",
+							"        }",
+							"    ],",
+							"    \"required\": [",
+							"        \"data\",",
+							"        \"message\",",
+							"        \"status\"",
+							"    ],",
+							"    \"properties\": {",
+							"        \"data\": {",
+							"            \"$id\": \"#/properties/data\",",
+							"            \"type\": \"object\",",
+							"            \"title\": \"The data schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": {},",
+							"            \"examples\": [",
+							"                {",
+							"                    \"company_address\": \"sylhet\",",
+							"                    \"company_id\": 752,",
+							"                    \"company_name\": \"tata\",",
+							"                    \"tin\": \"54000065\"",
+							"                }",
+							"            ],",
+							"            \"required\": [",
+							"                \"company_address\",",
+							"                \"company_id\",",
+							"                \"company_name\",",
+							"                \"tin\"",
+							"            ],",
+							"            \"properties\": {",
+							"                \"company_address\": {",
+							"                    \"$id\": \"#/properties/data/properties/company_address\",",
+							"                    \"type\": \"string\",",
+							"                    \"title\": \"The company_address schema\",",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",",
+							"                    \"default\": \"\",",
+							"                    \"examples\": [",
+							"                        \"sylhet\"",
+							"                    ]",
+							"                },",
+							"                \"company_id\": {",
+							"                    \"$id\": \"#/properties/data/properties/company_id\",",
+							"                    \"type\": \"integer\",",
+							"                    \"title\": \"The company_id schema\",",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",",
+							"                    \"default\": 0,",
+							"                    \"examples\": [",
+							"                        752",
+							"                    ]",
+							"                },",
+							"                \"company_name\": {",
+							"                    \"$id\": \"#/properties/data/properties/company_name\",",
+							"                    \"type\": \"string\",",
+							"                    \"title\": \"The company_name schema\",",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",",
+							"                    \"default\": \"\",",
+							"                    \"examples\": [",
+							"                        \"tata\"",
+							"                    ]",
+							"                },",
+							"                \"tin\": {",
+							"                    \"$id\": \"#/properties/data/properties/tin\",",
+							"                    \"type\": \"string\",",
+							"                    \"title\": \"The tin schema\",",
+							"                    \"description\": \"An explanation about the purpose of this instance.\",",
+							"                    \"default\": \"\",",
+							"                    \"examples\": [",
+							"                        \"54000065\"",
+							"                    ]",
+							"                }",
+							"            },",
+							"            \"additionalProperties\": true",
+							"        },",
+							"        \"message\": {",
+							"            \"$id\": \"#/properties/message\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The message schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"Successfully registered company 'tata' .\"",
+							"            ]",
+							"        },",
+							"        \"status\": {",
+							"            \"$id\": \"#/properties/status\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The status schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"success\"",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"additionalProperties\": true",
+							"}",
+							"",
+							"pm.test('Schema Validation', function() {",
+							"  var result=tv4.validateResult(pm.response.json(), schema);",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"tata\",\n\t\"address\": \"sylhet\",\n\t\"tin\": \"54000065\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}} /api/v1/field-force/auth/register-company",
+					"host": [
+						"{{authUrl}} "
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"register-company"
+					]
+				},
+				"description": "BRD: As a super admin, I want to create a new company, so that a company is created. \n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: User should be able to register their company with their company information.\n\nTester need to pass these informations of the company's in the\n\nBody section:\nMethod: Post\nTest Data:\n\n{\n    \"name\": \"tata\",\n\t\"address\": \"sylhet\",\n\t\"tin\": \"54000065\"\n}\nExcepted Result:\n\n{\n    \"data\": {\n        \"company_address\": \"sylhet\",\n        \"company_id\": 752,\n        \"company_name\": \"tata\",\n        \"tin\": \"54000065\"\n    },\n    \"message\": \"Successfully registered company 'tata' .\",\n    \"status\": \"success\"\n}\nActual Result:\n\n{\n    \"data\": {\n        \"company_address\": \"sylhet\",\n        \"company_id\": 752,\n        \"company_name\": \"tata\",\n        \"tin\": \"54000065\"\n    },\n    \"message\": \"Successfully registered company 'tata' .\",\n    \"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 201\nTest Status: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "2-FFM-64-Reg-adm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6991e89d-f2a3-41ca-82b1-739bc489e296",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"var schema ={\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"message\": \"Successfully registered dashboard user alim.\",\r",
+							"            \"status\": \"success\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"message\",\r",
+							"        \"status\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Successfully registered dashboard user alim.\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"success\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"\r",
+							"pm.test('Schema Validation', function() {\r",
+							"  var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    \r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"nan@yahoo.com\",\n    \"password\": \"238822\",\n    \"username\": \"alim\",\n    \"firstname\": \"nannan\",\n    \"lastname\": \"paate\",\n    \"company_id\": 752,\n    \"member_type\": 2\n}\n\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/register-dashboard-user",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"register-dashboard-user"
+					]
+				},
+				"description": "BRD: As a super admin, I want to create company admin, so that company admin is created. \n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: As a super admin, I want to register company admin from the admin panel so that the admin can log in to the web admin panel and can manage the company.\n\nTester need to pass these informations of the company admin in\n\nBody section:\nMethod: Post\nTest Data:\n\n{\n    \"email\": \"nan@yahoo.com\",\n    \"password\": \"238822\",\n    \"username\": \"alim\",\n    \"firstname\": \"nannan\",\n    \"lastname\": \"paate\",\n    \"company_id\": 752,\n    \"member_type\": 2\n}\nExcepted Result:\n\n{\n    \"message\": \"Successfully registered dashboard user alim.\",\n    \"status\": \"success\"\n}\nActual Result:\n\n{\n    \"message\": \"Successfully registered dashboard user alim.\",\n    \"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 201\nTest Status: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "3-FFM-62-admin-Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57a06523-8537-4822-b2ad-747b05609d9b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"\r",
+							"\r",
+							"var schema ={\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDU1Nzk1NTcsImlhdCI6MTYwNTU3NTk1Nywic3ViIjo2NzIsInVzZXJfdHlwZSI6IkRhc2hib2FyZCIsIm5hbWUiOiJuYW5uYW4gcGFhdGUiLCJlbWFpbCI6Im5hbkB5YWhvby5jb20iLCJtZW1iZXJfdHlwZSI6MiwiY29tcGFueV9pZCI6NzUyLCJkZXNpZ25hdGlvbiI6bnVsbCwiZGVwYXJ0bWVudCI6bnVsbH0.nCb9L1RvSlHN6aiSlJe0fpXoZXdSlLiME_szqbwu8Vg\",\r",
+							"            \"message\": \"Successfully logged in.\",\r",
+							"            \"status\": \"success\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"auth_token\",\r",
+							"        \"message\",\r",
+							"        \"status\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"auth_token\": {\r",
+							"            \"$id\": \"#/properties/auth_token\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The auth_token schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDU1Nzk1NTcsImlhdCI6MTYwNTU3NTk1Nywic3ViIjo2NzIsInVzZXJfdHlwZSI6IkRhc2hib2FyZCIsIm5hbWUiOiJuYW5uYW4gcGFhdGUiLCJlbWFpbCI6Im5hbkB5YWhvby5jb20iLCJtZW1iZXJfdHlwZSI6MiwiY29tcGFueV9pZCI6NzUyLCJkZXNpZ25hdGlvbiI6bnVsbCwiZGVwYXJ0bWVudCI6bnVsbH0.nCb9L1RvSlHN6aiSlJe0fpXoZXdSlLiME_szqbwu8Vg\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Successfully logged in.\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"success\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Schema Validation', function() {\r",
+							"  var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    \r",
+							"});\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"auth_token1\", jsonData.auth_token);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"nan@yahoo.com\",\n    \"password\": \"238822\"\n}\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/dashboard-user-login",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"dashboard-user-login"
+					]
+				},
+				"description": "BRD: As a company admin, I want to login to the admin panel \n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: I want to login to the admin panel so that I can avail of services available according to my member type.\n\nBody section:\nMethod: Post\nTest Data:\n\n{\n\t\"email\": \"nan@yahoo.com\",\n    \"password\": \"238822\"\n}\n\nExcepted Result:\n\n{\n\t\"auth_token\": \" \",\n\t\"message\": \"Successfully logged in.\",\n\t\"status\": \"success\"\n}\n\nActual Result:\n\n{\n\t\"auth_token\": \" \",\n\t\"message\": \"Successfully logged in.\",\n\t\"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 200\nTest Status: Passed\n"
+			},
+			"response": []
+		},
+		{
+			"name": "4-FFM-60-Regapp-user ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c1ea38d-b407-4bb6-9079-2b95865e2526",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": {},",
+							"    \"examples\": [",
+							"        {",
+							"            \"message\": \"Successfully registered.\",",
+							"            \"status\": \"success\"",
+							"        }",
+							"    ],",
+							"    \"required\": [",
+							"        \"message\",",
+							"        \"status\"",
+							"    ],",
+							"    \"properties\": {",
+							"        \"message\": {",
+							"            \"$id\": \"#/properties/message\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The message schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"Successfully registered.\"",
+							"            ]",
+							"        },",
+							"        \"status\": {",
+							"            \"$id\": \"#/properties/status\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The status schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"success\"",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"additionalProperties\": true",
+							"}",
+							"",
+							"",
+							"pm.test('Schema Validation', function() {",
+							"  var result=tv4.validateResult(pm.response.json(), schema);",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQxOTQzNzUsImlhdCI6MTYwNDE5MDc3NSwic3ViIjo2NjksInVzZXJfdHlwZSI6IkRhc2hib2FyZCIsIm5hbWUiOiJzaCBpbHUiLCJlbWFpbCI6InNoaUB5YWhvLmNvbSIsIm1lbWJlcl90eXBlIjoyLCJjb21wYW55X2lkIjo3NDQsImRlc2lnbmF0aW9uIjpudWxsLCJkZXBhcnRtZW50IjpudWxsfQ.FgWAxN9FDYXNZo-p6xD_eF-FPk20miCQ9MMRQznwFmc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone_number\": \"01711145579\",\r\n    \"company_id\": 752,\r\n    \"iso_code\": \"BD\",\r\n    \"first_name\":\"Suelh\",\r\n    \"last_name\":\"Ahmed\",\r\n    \"nid\":\"98746283647293374\",\r\n    \"designation\":\"Manager\",\r\n    \"department\":\"Solar\"\r\n    \r\n}\r\n\r\n    \r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}  /api/v1/field-force/auth/register-user",
+					"host": [
+						"{{authUrl}}  "
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"register-user"
+					]
+				},
+				"description": "BRD: As a company admin, I want to create a new user or mobile App (FFM), so that a new user is created. \n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: company admin should be able to create a new user from the admin panel.\n\nBody section:\nMethod: Post\nTest Data:\n\n{\n    \"phone_number\": \"01711145579\",\n    \"company_id\": 752,\n    \"iso_code\": \"BD\",\n    \"first_name\":\"Suelh\",\n    \"last_name\":\"Ahmed\",\n    \"nid\":\"98746283647293374\",\n    \"designation\":\"Manager\",\n    \"department\":\"Solar\"\n    \n}\n\nExcepted Result:\n\n{\n    \"message\": \"Successfully registered.\",\n    \"status\": \"success\"\n}\nActual Result:\n\n{\n    \"message\": \"Successfully registered.\",\n    \"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 201\nTest Status: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "5-FFM-58-App-user-login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a32a6b52-d2d1-4797-be6b-8413f4d3cda3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"var schema ={\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYxODQ3MjIsImlhdCI6MTYwNTU3OTkyMiwic3ViIjozMzAsIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IlN1ZWxoIEFobWVkIiwicGhvbmVfbnVtYmVyIjoiMDE3MTExNDU1NzkiLCJtZW1iZXJfdHlwZSI6M30.9YVbpt2ywNA4laQSkZtlMkgBlrId5gqqyrra_6QEkh0\",\r",
+							"            \"message\": \"Successfully logged in.\",\r",
+							"            \"status\": \"success\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"auth_token\",\r",
+							"        \"message\",\r",
+							"        \"status\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"auth_token\": {\r",
+							"            \"$id\": \"#/properties/auth_token\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The auth_token schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYxODQ3MjIsImlhdCI6MTYwNTU3OTkyMiwic3ViIjozMzAsIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IlN1ZWxoIEFobWVkIiwicGhvbmVfbnVtYmVyIjoiMDE3MTExNDU1NzkiLCJtZW1iZXJfdHlwZSI6M30.9YVbpt2ywNA4laQSkZtlMkgBlrId5gqqyrra_6QEkh0\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Successfully logged in.\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"success\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"\r",
+							"pm.test('Schema Validation', function() {\r",
+							"  var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    \r",
+							"});\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"auth_token2\", jsonData.auth_token);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"01711145579\",\n    \"firebase_id\": \"firebase_ididid\",\n    \"secret_text\": \"the_super_secret_text\",\n    \"phone_number_int\": \"+01711145579\",\n    \"iso_code\": \"BD\"\n}\n\n\n\n\n\n \n\n\n\n\n\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}} /api/v1/field-force/auth/user-login",
+					"host": [
+						"{{authUrl}} "
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"user-login"
+					]
+				},
+				"description": "BRD: As an App user, I want to login to the FFM app so that I can avail services available to me.\n\n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: App user i want to login to the FFM app through my registered contact number\n\nBody section:\nMethod: Post\nTest Data:\n\n{\n    \"phone_number\": \"01711145579\",\n    \"firebase_id\": \"firebase_ididid\",\n    \"secret_text\": \"the_super_secret_text\",\n    \"phone_number_int\": \"+01711145579\",\n    \"iso_code\": \"BD\"\n}\n\nExcepted Result:\n\n{\n  \"auth_token\": \" \", \n  \"message\": \"Successfully logged in.\", \n  \"status\": \"success\"\n}\n\nActual Result:\n\n{\n  \"auth_token\": \" \", \n  \"message\": \"Successfully logged in.\", \n  \"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 200\nTest Result: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "6-FFM-63-com-adm-authenti",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0cdd7d5-21cc-4b33-89b5-e32b18dfe637",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"",
+							"//create variable for json Data",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"//Validate Schema for this URL",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": {},",
+							"    \"examples\": [",
+							"        {",
+							"            \"data\": 672,",
+							"            \"status\": \"success\"",
+							"        }",
+							"    ],",
+							"    \"required\": [",
+							"        \"data\",",
+							"        \"status\"",
+							"    ],",
+							"    \"properties\": {",
+							"        \"data\": {",
+							"            \"$id\": \"#/properties/data\",",
+							"            \"type\": \"integer\",",
+							"            \"title\": \"The data schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": 0,",
+							"            \"examples\": [",
+							"                672",
+							"            ]",
+							"        },",
+							"        \"status\": {",
+							"            \"$id\": \"#/properties/status\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The status schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"success\"",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"additionalProperties\": true",
+							"}",
+							"    ",
+							"    ",
+							"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/authenticate-dashboard-user",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"authenticate-dashboard-user"
+					]
+				},
+				"description": "BRD: As a techserve4u and company admin, I want to see the admin is authenticated one or not so that I can be sure that which admin is authenticated.\n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\n\nObjective: I want to see the admin is authenticated one or not so that I can be sure that which admin is authenticated.\n\nBody section:\nMethod: Get\nTest Data:\n\nExcepted Result:\n\n{\n\t\"data\": 672,\n\t\"status\": \"success\"\n}\n\nActual Result:\n\n{\n\t\"data\": 672,\n\t\"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 200\nTest Result: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "7-FFM-57-App-user-all-cont-info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62d5103b-dfd5-4c35-aa5d-07d72418e8fc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"",
+							"//create variable for json Data",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"//Validate Schema for this URL",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"array\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": [],",
+							"    \"examples\": [",
+							"        [",
+							"            {",
+							"                \"department\": null,",
+							"                \"designation\": null,",
+							"                \"email\": \"nan@yahoo.com\",",
+							"                \"name\": \"nannan paate\",",
+							"                \"phone_number\": \"\",",
+							"                \"profile_photo\": \"\"",
+							"            }",
+							"        ]",
+							"    ],",
+							"    \"additionalItems\": true,",
+							"    \"items\": {",
+							"        \"$id\": \"#/items\",",
+							"        \"anyOf\": [",
+							"            {",
+							"                \"$id\": \"#/items/anyOf/0\",",
+							"                \"type\": \"object\",",
+							"                \"title\": \"The first anyOf schema\",",
+							"                \"description\": \"An explanation about the purpose of this instance.\",",
+							"                \"default\": {},",
+							"                \"examples\": [",
+							"                    {",
+							"                        \"department\": null,",
+							"                        \"designation\": null,",
+							"                        \"email\": \"nan@yahoo.com\",",
+							"                        \"name\": \"nannan paate\",",
+							"                        \"phone_number\": \"\",",
+							"                        \"profile_photo\": \"\"",
+							"                    }",
+							"                ],",
+							"                \"required\": [",
+							"                    \"department\",",
+							"                    \"designation\",",
+							"                    \"email\",",
+							"                    \"name\",",
+							"                    \"phone_number\",",
+							"                    \"profile_photo\"",
+							"                ],",
+							"                \"properties\": {",
+							"                    \"department\": {",
+							"                        \"$id\": \"#/items/anyOf/0/properties/department\",",
+							"                        \"type\": \"null\",",
+							"                        \"title\": \"The department schema\",",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",",
+							"                        \"default\": null,",
+							"                        \"examples\": [",
+							"                            null",
+							"                        ]",
+							"                    },",
+							"                    \"designation\": {",
+							"                        \"$id\": \"#/items/anyOf/0/properties/designation\",",
+							"                        \"type\": \"null\",",
+							"                        \"title\": \"The designation schema\",",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",",
+							"                        \"default\": null,",
+							"                        \"examples\": [",
+							"                            null",
+							"                        ]",
+							"                    },",
+							"                    \"email\": {",
+							"                        \"$id\": \"#/items/anyOf/0/properties/email\",",
+							"                        \"type\": \"string\",",
+							"                        \"title\": \"The email schema\",",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",",
+							"                        \"default\": \"\",",
+							"                        \"examples\": [",
+							"                            \"nan@yahoo.com\"",
+							"                        ]",
+							"                    },",
+							"                    \"name\": {",
+							"                        \"$id\": \"#/items/anyOf/0/properties/name\",",
+							"                        \"type\": \"string\",",
+							"                        \"title\": \"The name schema\",",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",",
+							"                        \"default\": \"\",",
+							"                        \"examples\": [",
+							"                            \"nannan paate\"",
+							"                        ]",
+							"                    },",
+							"                    \"phone_number\": {",
+							"                        \"$id\": \"#/items/anyOf/0/properties/phone_number\",",
+							"                        \"type\": \"string\",",
+							"                        \"title\": \"The phone_number schema\",",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",",
+							"                        \"default\": \"\",",
+							"                        \"examples\": [",
+							"                            \"\"",
+							"                        ]",
+							"                    },",
+							"                    \"profile_photo\": {",
+							"                        \"$id\": \"#/items/anyOf/0/properties/profile_photo\",",
+							"                        \"type\": \"string\",",
+							"                        \"title\": \"The profile_photo schema\",",
+							"                        \"description\": \"An explanation about the purpose of this instance.\",",
+							"                        \"default\": \"\",",
+							"                        \"examples\": [",
+							"                            \"\"",
+							"                        ]",
+							"                    }",
+							"                },",
+							"                \"additionalProperties\": true",
+							"            }",
+							"        ]",
+							"    }",
+							"}",
+							"",
+							"tests[\"valid schema\"] = tv4.validate(jsonData, schema);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDU1NzQ5ODMsImlhdCI6MTYwNDk3MDE4Mywic3ViIjozMzAsIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IlN1ZWxoIEFobWVkIiwicGhvbmVfbnVtYmVyIjoiMDE3MTExNDU1NzkiLCJtZW1iZXJfdHlwZSI6M30.xrav1N-QS6ywyYsTd1Ld4PTEBwYEHdJMFQWCVdSTvdY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/get-company-contacts",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"get-company-contacts"
+					]
+				},
+				"description": "BRD: As an App user, I want to get the company contact (user and admin) list so that I can see the whole company contact list\n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: As an App user, I want to get the company contact (user and admin) \n\nBody section:\nMethod: Get\nTest Data:\n\nExcepted Result:\n\n[\n\t{\n\t\t\"department\": null,\n\t\t\"designation\": null,\n\t\t\"email\": \"nan@yahoo.com\",\n\t\t\"name\": \"nannan paate\",\n\t\t\"phone_number\": \"\",\n\t\t\"profile_photo\": \"\"\n\t}\n]\n\nActual Result:\n\n[\n\t{\n\t\t\"department\": null,\n\t\t\"designation\": null,\n\t\t\"email\": \"nan@yahoo.com\",\n\t\t\"name\": \"nannan paate\",\n\t\t\"phone_number\": \"\",\n\t\t\"profile_photo\": \"\"\n\t}\n]\n\nTest Result:\nStatus Code: 200\nTest Result: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "8-FFM-67-App-user-refresh-token ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3539a85c-da68-45b6-b5dc-b32e0d568cdb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"",
+							"//create variable for json Data",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"",
+							"//Validate Schema for this URL",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": {},",
+							"    \"examples\": [",
+							"        {",
+							"            \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYxOTM3MTAsImlhdCI6MTYwNTU4ODkxMCwic3ViIjozMzAsIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IlN1ZWxoIEFobWVkIiwicGhvbmVfbnVtYmVyIjoiMDE3MTExNDU1NzkiLCJtZW1iZXJfdHlwZSI6M30.8O90_HwT812X_jpvfRtghpptk-b9YjUki2OwxkfH3oQ\",",
+							"            \"message\": \"Successfully refreshed token.\",",
+							"            \"status\": \"success\"",
+							"        }",
+							"    ],",
+							"    \"required\": [",
+							"        \"auth_token\",",
+							"        \"message\",",
+							"        \"status\"",
+							"    ],",
+							"    \"properties\": {",
+							"        \"auth_token\": {",
+							"            \"$id\": \"#/properties/auth_token\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The auth_token schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYxOTM3MTAsImlhdCI6MTYwNTU4ODkxMCwic3ViIjozMzAsIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IlN1ZWxoIEFobWVkIiwicGhvbmVfbnVtYmVyIjoiMDE3MTExNDU1NzkiLCJtZW1iZXJfdHlwZSI6M30.8O90_HwT812X_jpvfRtghpptk-b9YjUki2OwxkfH3oQ\"",
+							"            ]",
+							"        },",
+							"        \"message\": {",
+							"            \"$id\": \"#/properties/message\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The message schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"Successfully refreshed token.\"",
+							"            ]",
+							"        },",
+							"        \"status\": {",
+							"            \"$id\": \"#/properties/status\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The status schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"success\"",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"additionalProperties\": true",
+							"}",
+							"tests[\"valid schema\"] = tv4.validate(jsonData, schema);",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token2\", jsonData.auth_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/refresh-token",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"refresh-token"
+					]
+				},
+				"description": "BRD: As Techserve4u/Company admin and FFM app user, I want to get a new token from API so that I can use the new token.\n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: As Techserve4u_Company admin and FFM app user,  want to get a new token.\n\nBody section:\nMethod: Get\nTest Data:\n\nExcepted Result:\n\n{\n\t\"auth_token\": \" \",\n\t\"message\": \"Successfully refreshed token.\",\n\t\"status\": \"success\"\n}\n\nActual Result:\n\n{\n\t\"auth_token\": \" \",\n\t\"message\": \"Successfully refreshed token.\",\n\t\"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 200\nTest Result: Passed\n "
+			},
+			"response": []
+		},
+		{
+			"name": "9-FFM-56-App-user-authenti",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c4e3486-235e-444f-ab24-8625d10d3ddd",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//create variable for json Data\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"\r",
+							"//Validate Schema for this URL\r",
+							"\r",
+							"var schema ={\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"data\": 330,\r",
+							"            \"status\": \"success\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"data\",\r",
+							"        \"status\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"data\": {\r",
+							"            \"$id\": \"#/properties/data\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The data schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                330\r",
+							"            ]\r",
+							"        },\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"success\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"\r",
+							"tests[\"valid schema\"] = tv4.validate(jsonData, schema);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDU1NzQ5ODMsImlhdCI6MTYwNDk3MDE4Mywic3ViIjozMzAsIm1vZHVsZXMiOltdLCJ1c2VyX3R5cGUiOiJHZW5lcmFsIiwibmFtZSI6IlN1ZWxoIEFobWVkIiwicGhvbmVfbnVtYmVyIjoiMDE3MTExNDU1NzkiLCJtZW1iZXJfdHlwZSI6M30.xrav1N-QS6ywyYsTd1Ld4PTEBwYEHdJMFQWCVdSTvdY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/authenticate-user",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"authenticate-user"
+					]
+				},
+				"description": "BRD: As an App user, I want to see my information is authenticated or not so that I can be sure that my id information is authenticated.\r\n\r\nSE: Shiblu Ahmad\r\nPO: Pranto Mazumder\r\nQA: Nazrul Islam\r\nReviewer: Fuad Ahmed \r\n\r\n\r\nObjective:  I want to see my information is authenticated or not so that I can be sure that my id information is authenticated.\r\n\r\nBody section:\r\nMethod: Get\r\nTest Data:\r\n\r\nExcepted Result:\r\n\r\n{\r\n\t\"data\": 330,\r\n\t\"status\": \"success\"\r\n}\r\n\r\nActual Result:\r\n\r\n{\r\n\t\"data\": 330,\r\n\t\"status\": \"success\"\r\n}\r\n\r\nTest Result:\r\nStatus Code:200\r\nTest Result: Passed\r\n\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "10-FFM-61-Com-admi-view-user-list ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d21a41bf-1739-4861-8774-5d024561e499",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"var schema ={",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",",
+							"    \"$id\": \"http://example.com/example.json\",",
+							"    \"type\": \"object\",",
+							"    \"title\": \"The root schema\",",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",",
+							"    \"default\": {},",
+							"    \"examples\": [",
+							"        {",
+							"            \"email\": null,",
+							"            \"first_name\": \"Suelh\",",
+							"            \"id\": 330,",
+							"            \"phone_number\": \"01711145579\",",
+							"            \"registered_on\": \"Tue, 03 Nov 2020 03:25:29 GMT\"",
+							"        }",
+							"    ],",
+							"    \"required\": [",
+							"        \"email\",",
+							"        \"first_name\",",
+							"        \"id\",",
+							"        \"phone_number\",",
+							"        \"registered_on\"",
+							"    ],",
+							"    \"properties\": {",
+							"        \"email\": {",
+							"            \"$id\": \"#/properties/email\",",
+							"            \"type\": \"null\",",
+							"            \"title\": \"The email schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": null,",
+							"            \"examples\": [",
+							"                null",
+							"            ]",
+							"        },",
+							"        \"first_name\": {",
+							"            \"$id\": \"#/properties/first_name\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The first_name schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"Suelh\"",
+							"            ]",
+							"        },",
+							"        \"id\": {",
+							"            \"$id\": \"#/properties/id\",",
+							"            \"type\": \"integer\",",
+							"            \"title\": \"The id schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": 0,",
+							"            \"examples\": [",
+							"                330",
+							"            ]",
+							"        },",
+							"        \"phone_number\": {",
+							"            \"$id\": \"#/properties/phone_number\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The phone_number schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"01711145579\"",
+							"            ]",
+							"        },",
+							"        \"registered_on\": {",
+							"            \"$id\": \"#/properties/registered_on\",",
+							"            \"type\": \"string\",",
+							"            \"title\": \"The registered_on schema\",",
+							"            \"description\": \"An explanation about the purpose of this instance.\",",
+							"            \"default\": \"\",",
+							"            \"examples\": [",
+							"                \"Tue, 03 Nov 2020 03:25:29 GMT\"",
+							"            ]",
+							"        }",
+							"    },",
+							"    \"additionalProperties\": true",
+							"}",
+							"",
+							"",
+							"pm.test('Schema Validation', function() {",
+							"  var result=tv4.validateResult(pm.response.json(), schema);",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/get-company-users/752",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"get-company-users",
+						"752"
+					]
+				},
+				"description": "BRD: As a company admin, I want to get the user list so that I can see the whole company user list.\n\n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: I want to get the user list so that I can see the whole company user list.\n\nBody section:\nMethod: Get\nTest Data:\n\nExcepted Result:\n\n[\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 325,\n\t\t\"phone_number\": \"01970112658\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 01:10:41 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 326,\n\t\t\"phone_number\": \"01717845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:22:47 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 327,\n\t\t\"phone_number\": \"01727845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:23:10 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 328,\n\t\t\"phone_number\": \"01721845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:23:31 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 329,\n\t\t\"phone_number\": \"01711845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:24:17 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Suelh\",\n\t\t\"id\": 330,\n\t\t\"phone_number\": \"01711145579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:25:29 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Suh\",\n\t\t\"id\": 466,\n\t\t\"phone_number\": \"01788145579\",\n\t\t\"registered_on\": \"Tue, 17 Nov 2020 04:29:17 GMT\"\n\t}\n]\n\nActual Result:\n\n\n[\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 325,\n\t\t\"phone_number\": \"01970112658\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 01:10:41 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 326,\n\t\t\"phone_number\": \"01717845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:22:47 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 327,\n\t\t\"phone_number\": \"01727845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:23:10 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 328,\n\t\t\"phone_number\": \"01721845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:23:31 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Ragnarson\",\n\t\t\"id\": 329,\n\t\t\"phone_number\": \"01711845579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:24:17 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Suelh\",\n\t\t\"id\": 330,\n\t\t\"phone_number\": \"01711145579\",\n\t\t\"registered_on\": \"Tue, 03 Nov 2020 03:25:29 GMT\"\n\t},\n\t{\n\t\t\"email\": null,\n\t\t\"first_name\": \"Suh\",\n\t\t\"id\": 466,\n\t\t\"phone_number\": \"01788145579\",\n\t\t\"registered_on\": \"Tue, 17 Nov 2020 04:29:17 GMT\"\n\t}\n]\n\nTest Result:\nStatus Code: 200\nTest Status: Passed"
+			},
+			"response": []
+		},
+		{
+			"name": "3.1-FFM-66-Com-Admi-Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0556414-cf42-41c6-beb6-f8a8a3ce1605",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"var schema ={\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"message\": \"Successfully logged out.\",\r",
+							"            \"status\": \"success\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"message\",\r",
+							"        \"status\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Successfully logged out.\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"success\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Schema Validation', function() {\r",
+							"  var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admin_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{authUrl}} /api/v1/field-force/auth/logout-dashboard-user",
+					"host": [
+						"{{authUrl}} "
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"logout-dashboard-user"
+					]
+				},
+				"description": "BRD:As a techserve4u/company admin, I want to log out from the admin panel so that I should not be able to access the admin panel.\r\n\r\nSE: Shiblu Ahmad\r\nPO: Pranto Mazumder\r\nQA: Nazrul Islam\r\nReviewer: Fuad Ahmed \r\n\r\nObjective: I want to log out from the admin panel so that I should not be able to access the admin panel.\r\n\r\nBody section:\r\nMethod: Get\r\nTest Data:\r\n\r\nExcepted Result:\r\n\r\n{\r\n\t\"message\": \"Successfully logged out.\",\r\n\t\"status\": \"success\"\r\n}\r\nActual Result:\r\n\r\n{\r\n\t\"message\": \"Successfully logged out.\",\r\n\t\"status\": \"success\"\r\n}\r\n\r\nTest Result:\r\nStatus Code: 400  \r\nTest Status: Passed\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "5.1-FFM-59-App-user-logout ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c5dcd8ce-3668-471c-a11a-e2a966597106",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"var schema ={\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"message\": \"Successfully logged out.\",\r",
+							"            \"status\": \"success\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"message\",\r",
+							"        \"status\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Successfully logged out.\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"success\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Schema Validation', function() {\r",
+							"  var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{authUrl}}/api/v1/field-force/auth/logout-user",
+					"host": [
+						"{{authUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"logout-user"
+					]
+				},
+				"description": "BRD: As an app user, I want to log out from the FFM mobile app so that I can not avail the services available in the app\n\nSE: Shiblu Ahmad\nPO: Pranto Mazumder\nQA: Nazrul Islam\nReviewer: Fuad Ahmed \n\nObjective: I want to log out from the admin panel so that I should not be able to access the admin panel.\n\nBody section:\nMethod: Get\nTest Data:\n\nExcepted Result:\n\n{\n\t\"message\": \"Successfully logged out.\",\n\t\"status\": \"success\"\n}\n\nActual Result:\n\n{\n\t\"message\": \"Successfully logged out.\",\n\t\"status\": \"success\"\n}\n\nTest Result:\nStatus Code: 400\nTest Status: Passed\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1325e039-9a9a-498d-917a-d83900ce69e5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3e8f8b89-fbff-48e6-b28e-95a7a384e412",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
